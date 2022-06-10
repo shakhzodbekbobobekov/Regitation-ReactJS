@@ -16,6 +16,12 @@ export const useSignup = () => {
 
       console.log(req.user);
 
+      if (!req.user) {
+        throw new Error("Could create user");
+      }
+
+      await req.user.updateProfile({ displayName });
+
       setIsPending(false);
       setError(null);
     } catch (err) {
