@@ -1,13 +1,15 @@
 import styles from "./Login.module.css";
 import { useState } from "react";
+import useLogin from "../../hooks/useLogin";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { login, isPending, error } = useLogin();
 
   const handleForm = (e) => {
     e.preventDefault();
-    console.log(email, password);
+    login(email, password);
     // setEmail("");
     // setPassword("");
     // setDisplayName("");
@@ -41,13 +43,12 @@ function Login() {
         />
       </label>
 
-      {/* {isPending && (
+      {isPending && (
         <button className="btn" disabled>
           Loading...
         </button>
       )}
-      {!isPending && <button className="btn">Signup</button>}
-      {error && <div>{error}</div>} */}
+      {error && <div>{error}</div>}
     </form>
   );
 }
