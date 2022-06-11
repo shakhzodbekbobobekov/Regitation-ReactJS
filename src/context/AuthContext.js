@@ -1,7 +1,11 @@
-import React from "react";
+import { createContext, useReducer } from "react";
 
-function AuthContext() {
-  return <div>AuthContext</div>;
-}
+export const AuthContext = createContext();
 
-export default AuthContext;
+export const AuthContextProvider = ({ children }) => {
+  return (
+    <AuthContext.Provider value={{ user: "ahror ustoz" }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};

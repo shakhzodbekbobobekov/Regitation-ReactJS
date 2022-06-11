@@ -48,6 +48,7 @@ function Login() {
           Loading...
         </button>
       )}
+      {!isPending && <button className="btn">Login in</button>}
       {error && <div>{error}</div>}
     </form>
   );
