@@ -11,10 +11,9 @@ function Signup() {
   const handleForm = (e) => {
     e.preventDefault();
     signup(email, password, displayName);
-    console.log(email, password, displayName);
-    setEmail("");
-    setPassword("");
-    setDisplayName("");
+    // setEmail("");
+    // setPassword("");
+    // setDisplayName("");
   };
 
   return (

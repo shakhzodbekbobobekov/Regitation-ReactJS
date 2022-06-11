@@ -31,3 +31,5 @@ export const useSignup = () => {
   };
   return { signup, isPending, error };
 };
+
+export default useSignup;
