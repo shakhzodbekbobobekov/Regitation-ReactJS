@@ -1,9 +1,11 @@
 import styles from "./Navbar.module.css";
 import { Link } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
+import { useLogout } from "../hooks/useLogout";
 
 function Navbar() {
   const { user } = useAuth();
+  const { logout } = useLogout();
   return (
     <div className={styles.navbar}>
       <ul>
@@ -25,7 +27,9 @@ function Navbar() {
           <>
             <li>{user.displayName}</li>
             <li>
-              <button className="btn">Log Out</button>
+              <button className="btn" onClick={logout}>
+                Log Out
+              </button>
             </li>
           </>
         )}
