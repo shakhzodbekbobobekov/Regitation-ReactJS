@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { projectAuth } from "../firebase/config";
+import { useAuth } from "./useAuth";
 
 export const useSignup = () => {
   const [data, setData] = useState(null);
   const [isPending, setIsPending] = useState(false);
   const [error, setError] = useState(null);
+  const { dispatch } = useAuth();
 
   const signup = async (email, password, displayName) => {
     setIsPending(true);
@@ -14,7 +16,7 @@ export const useSignup = () => {
         password
       );
 
-      console.log(req.user);
+      dispatch({ type: "LOGIN", payload: req.user });
 
       if (!req.user) {
         throw new Error("Could create user");

@@ -9,6 +9,7 @@ import Signup from "./pages/signup/Signup";
 import Login from "./pages/login/Login";
 import Navbar from "./components/Navbar";
 import { useAuth } from "./hooks/useAuth";
+import PageNotFound from "./components/PageNotFound";
 
 function App() {
   const { authStatus, user } = useAuth();
@@ -22,9 +23,13 @@ function App() {
             <Routes>
               {user && <Route path="/" element={<Home />} />}
               {!user && <Route element={<Navigate to="/login" />} />}
+
               {!user && <Route path="/login" element={<Login />} />}
               {user && <Route path="/login" element={<Navigate to="/" />} />}
-              <Route path="/signup" element={<Signup />} />
+
+              {!user && <Route path="/signup" element={<Signup />} />}
+              {user && <Route path="/signup" element={<Navigate to="/" />} />}
+              <Route path="*" element={<PageNotFound />} />
             </Routes>
           </Router>
         </>
